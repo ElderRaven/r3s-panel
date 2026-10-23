@@ -2,36 +2,206 @@
 <html lang="ru">
 <head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<title>Домашняя сеть · R3S</title>
-<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'sha256-Np/E2OAT/MRFJmpL6jhL+btkEYN/GDTQyvo7sD1kOFA=' https://telegram.org; style-src 'sha256-fFhn1w49Xn35bwKzorm1cz1uFsXvxk4UDSp+MsyD9dI='; connect-src 'self'; img-src 'self' data:; base-uri 'none'; form-action 'none'">
-<script src="https://telegram.org/js/telegram-web-app.js?64"></script>
-<style nonce="__CSP_NONCE__">
-:root{color-scheme:dark;--bg:#0c111b;--card:#151d2b;--line:#2b374b;--text:#eef3fb;--muted:#a3afc3;--accent:#ff9853;--green:#6adab5;--red:#ff8585;font:16px/1.45 system-ui,sans-serif}*{box-sizing:border-box}body{margin:0;background:var(--tg-theme-bg-color,var(--bg));color:var(--tg-theme-text-color,var(--text));padding:20px 16px calc(24px + env(safe-area-inset-bottom));max-width:760px;margin:auto}h1{font-size:25px;line-height:1.2;margin:4px 0 6px}h2{font-size:18px;margin:0 0 14px}.eyebrow{color:var(--accent);font-size:12px;font-weight:700;letter-spacing:.1em}.muted{color:var(--tg-theme-hint-color,var(--muted));font-size:13px}.card{padding:18px;background:var(--tg-theme-secondary-bg-color,var(--card));border:1px solid var(--line);border-radius:18px;margin:16px 0}.status{display:grid;grid-template-columns:1fr 1fr;gap:14px}.metric{font-size:19px;font-weight:700}.label{font-size:12px;color:var(--muted);margin-bottom:4px}.pill{display:inline-block;font-size:12px;border:1px solid var(--line);padding:4px 9px;border-radius:999px;color:var(--green)}button,input{font:inherit;border-radius:12px;border:1px solid var(--line);padding:12px 14px}button{background:var(--card);color:var(--text);cursor:pointer;min-height:46px}button:disabled{opacity:.38;cursor:default}button.primary{background:var(--accent);border-color:var(--accent);color:#20150d;font-weight:700}button.danger{color:var(--red);border-color:#713b43}button.small{padding:7px 12px;min-height:36px;font-size:13px}input{width:100%;background:var(--bg);color:var(--text)}.actions{display:grid;grid-template-columns:1fr 1fr;gap:10px}.actions .wide{grid-column:1/-1}.row{display:flex;align-items:center;justify-content:space-between;gap:12px}.servers{display:flex;flex-direction:column;gap:9px;margin:12px 0}.server{text-align:left;display:flex;justify-content:space-between;align-items:center;gap:10px}.server[aria-pressed="true"]{border-color:var(--accent)}.server-title{font-weight:650;font-size:14px}.server-meta{font-size:12px;color:var(--muted)}.note{padding:13px;border:1px solid var(--line);border-radius:12px;font-size:13px;white-space:pre-wrap;margin:12px 0;display:none}.note.visible{display:block}.hidden{display:none!important}footer{font-size:12px;color:var(--muted);margin:20px 4px}.spinner{width:8px;height:8px;background:var(--green);border-radius:50%;display:inline-block;margin-right:6px}a{color:var(--accent)}@media(max-width:360px){.status{grid-template-columns:1fr}.actions{grid-template-columns:1fr}.actions .wide{grid-column:auto}}
+<meta name="referrer" content="no-referrer"><title>R3S · Домашняя сеть</title>
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'sha256-DVpTQG/JnVSuJbTX1G1M0Qmof9q5ZG1n6e9fO4tSNuE=' 'sha256-9U1eINQQpba4F7FQIGAZz3aeWbCh2GRLpPhM0o/Ayo4=' https://telegram.org; style-src 'sha256-MSc5mP22IkAxAhpB1syEexJLocn7FtrljXO8KKoHNJw='; connect-src 'self'; img-src 'self' data:; base-uri 'none'; form-action 'none'">
+<style nonce="__CSP_NONCE__">:root{color-scheme:dark;--bg:#101923;--card:#1b2938;--line:#35485b;--text:#f1f6fb;--muted:#a6bbce;--accent:#80d4ba;font:16px/1.45 system-ui,sans-serif}*{box-sizing:border-box}body{margin:0 auto;max-width:760px;padding:22px 16px calc(24px + env(safe-area-inset-bottom));background:var(--tg-theme-bg-color,var(--bg));color:var(--tg-theme-text-color,var(--text))}h1{font-size:34px;margin:2px 0}h2{font-size:19px;margin:0}.eyebrow{letter-spacing:.13em;font-size:11px;color:var(--accent);font-weight:700}.muted,footer{font-size:13px;color:var(--tg-theme-hint-color,var(--muted))}.card{padding:18px;border-radius:18px;border:1px solid var(--line);background:var(--tg-theme-secondary-bg-color,var(--card));margin:17px 0}.row{display:flex;align-items:center;justify-content:space-between;gap:12px}.metrics{display:grid;grid-template-columns:1.5fr 1fr;gap:12px;margin-top:18px}.metrics strong{font-size:20px;display:block;overflow-wrap:anywhere}.label{font-size:11px;color:var(--muted)}.badge{font-size:11px;border:1px solid var(--line);padding:4px 9px;border-radius:50px;color:var(--accent)}button,input{font:inherit;border:1px solid var(--line);border-radius:12px;color:var(--text);background:var(--bg);padding:12px;min-height:46px}button{cursor:pointer}button:disabled{opacity:.45;cursor:default}button[aria-pressed=true]{border-color:var(--accent);box-shadow:inset 3px 0 var(--accent)}button strong{display:block}button span{display:block;font-size:12px;color:var(--muted);margin-top:3px}.small{min-height:38px;font-size:12px;padding:8px 10px}.modes,.servers{display:grid;gap:9px;margin-top:13px}.modes button{text-align:left}.server{display:flex;align-items:center;justify-content:space-between;gap:10px;text-align:left}.server .name{font-weight:650;overflow-wrap:anywhere}.server .latency{font-size:13px;white-space:nowrap}.group{font-size:12px;color:var(--accent);font-weight:700;margin:12px 2px 0}input,.wide{width:100%}input{margin-top:12px}#message{border:1px solid var(--line);padding:13px;border-radius:12px;font-size:13px;white-space:pre-wrap}footer{margin-top:24px}[hidden]{display:none!important}@media(max-width:360px){.row{align-items:flex-start;flex-direction:column}.metrics{grid-template-columns:1fr}}
 </style>
+<script src="https://telegram.org/js/telegram-web-app.js?64"></script>
+
 </head>
 <body>
-<header><div class="eyebrow">ДОМАШНЯЯ СЕТЬ</div><h1>Управление R3S</h1><div id="freshness" class="muted">Проверяем доступ через Telegram…</div></header>
-<div id="message" class="note" role="status" aria-live="polite"></div>
-<section class="card" aria-label="Статус сети"><div class="row"><h2>Текущий маршрут</h2><span id="mode" class="pill">Не подтверждён</span></div><div class="status"><div><div class="label">СЕРВЕР</div><div id="route" class="metric">—</div></div><div><div class="label">ЗАДЕРЖКА HTTP</div><div id="delay" class="metric">—</div></div><div><div class="label">ДОСТУПНОСТЬ</div><div id="healthy">Неизвестна</div></div><div><div class="label">РЕКЛАМА</div><div id="adblock">Не подтверждено</div></div></div><p id="dnsWarning" class="muted hidden"></p></section>
-<section class="card"><h2>Режим работы</h2><div class="actions"><button id="auto" class="primary">VPN / AUTO</button><button id="rotate">Другой сервер</button><button id="direct" class="danger wide">Весь домашний трафик DIRECT</button><button id="refresh">Обновить подписки</button><button id="update">Обновить статус</button><button id="adToggle" class="wide hidden">Фильтрация рекламы</button></div><p id="refreshState" class="muted"></p><p class="muted">DIRECT передаёт трафик домашней сети провайдеру. После этого VPN можно включить на нужном компьютере отдельно.</p></section>
-<section class="card"><div class="row"><h2>Выбрать сервер</h2><span id="count" class="muted"></span></div><input id="search" type="search" placeholder="Название или провайдер" aria-label="Поиск сервера"><div id="servers" class="servers"></div><div id="pages" class="row hidden"><button id="prev" class="small">← Назад</button><span id="page" class="muted"></span><button id="next" class="small">Дальше →</button></div><p class="muted">Ручной выбор сохраняется до возврата в AUTO. Российские исключения остаются DIRECT в режиме VPN.</p></section>
-<footer>HTTP-задержка включает проверку через сервер и отличается от обычного ping. DNS-фильтрация убирает часть рекламы; реклама внутри видеопотоков может сохраняться.</footer>
-<script nonce="__CSP_NONCE__">
-'use strict';
-const tg=window.Telegram&&window.Telegram.WebApp;
-const $=id=>document.getElementById(id);
-let session=null, csrf=null, nonce=null, role='viewer', servers=[], busy=false, bridge=null, blocked=true, adEnabled=null;
-const providerNames={self:'Наш VPS',vzletka:'Vzletka',allvpn:'AllVPN'};
-const messages={telegram_auth_expired:'Сеанс устарел. Закройте панель и откройте её заново из бота.',telegram_auth_replayed_reopen_app:'Откройте новую панель из бота.',session_invalid:'Сеанс закончился. Откройте панель заново.',action_denied:'Нет доступа к этому действию.',telegram_user_denied:'Ваш Telegram ID не включён в список доступа.'};
-function note(text){$('message').textContent=text;$('message').classList.toggle('visible',Boolean(text));}
-function id(){const value=new Uint8Array(16);crypto.getRandomValues(value);return Array.from(value,x=>x.toString(16).padStart(2,'0')).join('');}
-function permissions(){const admin=role==='admin',operator=admin||role==='operator';for(const name of ['auto','rotate','refresh'])$(name).disabled=busy||blocked||!operator;$('direct').disabled=busy||blocked||!admin;$('update').disabled=busy||blocked;$('adToggle').disabled=busy||blocked||!admin;for(const item of document.querySelectorAll('button.server'))item.disabled=busy||blocked||!operator;}
-async function post(path,data,authenticated=false){const headers={'Content-Type':'application/json'};if(authenticated){headers.Authorization='Bearer '+session;headers['X-R3S-CSRF']=csrf;}const controller=new AbortController();const timer=setTimeout(()=>controller.abort(),55000);try{const response=await fetch(path,{method:'POST',headers,body:JSON.stringify(data),credentials:'omit',cache:'no-store',signal:controller.signal});const result=await response.json();if(!response.ok)throw new Error(messages[result.error]||'Доступ не подтверждён. Откройте панель заново.');return result;}finally{clearTimeout(timer);}}
-function status(reply){if(reply.accepted===true&&!reply.status){$('refreshState').textContent='Подписки обновляются в фоне.';return;}if(reply.verified!==true){$('mode').textContent='Не подтверждён';$('route').textContent='—';$('delay').textContent='—';$('healthy').textContent='Неизвестна';$('adblock').textContent='Не подтверждено';$('dnsWarning').classList.add('hidden');return;}const state=reply.status||{};$('mode').textContent={auto:'AUTO',manual:'РУЧНОЙ',direct:'DIRECT',blocked:'ЗАБЛОКИРОВАНО'}[state.mode]||'Неизвестен';$('route').textContent=(state.selected_server&&state.selected_server.name)||providerNames[state.route]||({direct:'Провайдер',reject:'Нет доступного VPN'}[state.route])||'—';$('delay').textContent=Number.isFinite(state.latency_ms)?Math.round(state.latency_ms)+' мс':'Нет измерения';$('healthy').textContent=state.healthy===true?'Доступен':state.healthy===false?'Недоступен':'Неизвестна';const ad=reply.adblock||state.adblock||{};adEnabled=ad.verified===true&&typeof ad.enabled==='boolean'?ad.enabled:null;$('adblock').textContent=ad.bypassed===true?'Обойдена; DNS провайдера':ad.verified!==true?'Защита не подтверждена':ad.protection_active===true?'Фильтрация работает':adEnabled===false?'Фильтрация выключена':ad.filter_domains===0?'Фильтр не загружен':'Защита не подтверждена';$('adToggle').classList.toggle('hidden',ad.available!==true||role!=='admin');$('adToggle').textContent=adEnabled?'Выключить фильтрацию рекламы':'Включить фильтрацию рекламы';$('dnsWarning').classList.toggle('hidden',state.dns_resolver_healthy!==false);$('dnsWarning').textContent=state.dns_resolver_healthy===false?'DNS недоступен; разрешение имён сейчас не работает.':'';const refresh=reply.refresh||state.refresh||{};$('refreshState').textContent={pending:'Обновление подписок ожидает запуска.',queued:'Обновление подписок ожидает запуска.',running:'Подписки обновляются в фоне.',completed:'Последнее обновление подписок завершено.',finished:'Последнее обновление подписок завершено.',succeeded:'Последнее обновление подписок завершено.',failed:'Последнее обновление не удалось; сохранён прежний рабочий список.',unknown:'Результат обновления не подтверждён.'}[refresh.state]||'';if(Array.isArray(refresh.providers)){for(const row of refresh.providers){if(Number.isInteger(row.count))$('refreshState').textContent+=' '+providerNames[row.provider]+': узлов '+row.count+', пропущено '+(row.skipped_count||0)+'.';}}}
-function renderServers(){const query=$('search').value.toLocaleLowerCase();const container=$('servers');container.replaceChildren();for(const entry of servers){if(!(entry.name+' '+providerNames[entry.provider]).toLocaleLowerCase().includes(query))continue;const button=document.createElement('button');button.className='server';button.setAttribute('aria-pressed',String(entry.selected===true));const text=document.createElement('span'),title=document.createElement('span'),meta=document.createElement('span');title.className='server-title';title.textContent=entry.name;meta.className='server-meta';meta.textContent=providerNames[entry.provider]+(entry.healthy===false?' · недоступен':'');text.append(title,document.createElement('br'),meta);const delay=document.createElement('span');delay.className='server-meta';delay.textContent=Number.isFinite(entry.latency_ms)?Math.round(entry.latency_ms)+' мс':'—';button.append(text,delay);button.onclick=()=>act('select_server',{server_id:entry.server_id});container.append(button);}if(!container.children.length){const empty=document.createElement('p');empty.className='muted';empty.textContent=query?'На этой странице совпадений нет.':'Список серверов пока недоступен.';container.append(empty);}$('count').textContent=bridge?(bridge.total+' всего'):(servers.length+' серверов');permissions();}
-async function act(action,params){if(busy||blocked)return;busy=true;permissions();note('Проверяем и применяем…');if(bridge){try{tg.sendData(JSON.stringify({nonce,request_id:id(),action,params:params||{}}));tg.close();}catch(error){note('Команда не отправлена. Используйте кнопки в боте.');busy=false;permissions();}return;}try{const result=await post('/api/action',{action,params:params||{},nonce,request_id:id()},true);nonce=result.nonce||nonce;status(result);if(result.servers){servers=result.servers;renderServers();}if(result.message)note(result.message);else if(!['status','list_servers','adblock_status'].includes(action)&&!(result.applied&&result.verified))note('Изменение не подтверждено. Обновите статус перед повтором.');else note(['status','list_servers','adblock_status'].includes(action)?'Статус обновлён.':'Применено и проверено.');}catch(error){blocked=true;note('Связь прервалась; результат действия неизвестен. Откройте новую панель и проверьте статус перед повтором.');}finally{busy=false;permissions();}}
-$('auto').onclick=()=>act('auto');$('rotate').onclick=()=>act('rotate');$('direct').onclick=()=>act('direct');$('refresh').onclick=()=>act('refresh_subscriptions');$('update').onclick=()=>act('status');$('adToggle').onclick=()=>act('adblock_toggle',{enabled:!adEnabled});$('search').oninput=renderServers;$('prev').onclick=()=>act('miniapp_page',{page:bridge.page-1});$('next').onclick=()=>act('miniapp_page',{page:bridge.page+1});
-async function start(){permissions();if(!tg){note('Откройте эту панель через своего Telegram-бота.');return;}tg.ready();tg.expand();try{if(location.hash.startsWith('#r3s=')){const encoded=location.hash.slice(5);if(encoded.length>16000)throw new Error();const bytes=Uint8Array.from(atob(encoded.replace(/-/g,'+').replace(/_/g,'/')),c=>c.charCodeAt(0));bridge=JSON.parse(new TextDecoder().decode(bytes));history.replaceState(null,'',location.pathname);if(!bridge||bridge.version!==1||typeof bridge.nonce!=='string'||!Array.isArray(bridge.servers))throw new Error();nonce=bridge.nonce;role=bridge.role;servers=bridge.servers;blocked=false;$('freshness').textContent='Снимок состояния из бота. После действия бот пришлёт новую панель.';status(bridge);$('pages').classList.remove('hidden');$('page').textContent=(bridge.page+1)+' / '+Math.max(1,Math.ceil(bridge.total/12));$('prev').disabled=bridge.page===0;$('next').disabled=(bridge.page+1)*12>=bridge.total;renderServers();return;}if(!tg.initData){note('Откройте свежую веб-панель кнопкой в своём боте.');return;}const auth=await post('/api/auth',{init_data:tg.initData});session=auth.session;csrf=auth.csrf;nonce=auth.nonce;role=auth.role;blocked=false;$('freshness').textContent='Сеанс защищён · '+(role==='admin'?'администратор':role==='operator'?'оператор':'просмотр');await act('status');if(!blocked)await act('list_servers');}catch(error){blocked=true;note(error.message||'Панель не подтверждена. Откройте её заново из бота.');permissions();}}
-start();
+<header><span class="eyebrow">ДОМАШНЯЯ СЕТЬ</span><h1>R3S</h1><p id="connection" class="muted">Подключаемся к панели…</p></header>
+<div id="message" role="status" aria-live="polite" hidden></div>
+<main>
+<section class="card"><div class="row"><h2>Подключение</h2><span id="modeBadge" class="badge">—</span></div>
+<div class="metrics"><div><span class="label">СЕРВЕР</span><strong id="selected">—</strong></div><div><span class="label">HTTP-ЗАДЕРЖКА</span><strong id="delay">—</strong></div></div>
+<p id="routeState" class="muted">Ожидаем подтверждение от R3S.</p></section>
+<section class="card"><h2>Режим трафика</h2><div id="modes" class="modes">
+<button data-mode="vpn" disabled><strong>Весь трафик VPN</strong><span>Обычный режим. По умолчанию наш VPS.</span></button>
+<button data-mode="services" disabled><strong>VPN для сервисов</strong><span>Видео, соцсети, Discord, Telegram и ИИ. Остальное напрямую.</span></button>
+<button data-mode="direct" disabled><strong>Напрямую</strong><span>Интернет через провайдера без VPN.</span></button>
+</div><p id="modeNote" class="muted"></p></section>
+<section class="card"><div class="row"><h2>Серверы</h2><button id="refresh" class="small" disabled>Обновить задержки</button></div>
+<p class="muted">Наш VPS → Vzletka → AllVPN Auto → AllVPN</p>
+<div id="progress" class="muted" aria-live="polite"></div>
+<input id="search" type="search" aria-label="Поиск сервера" placeholder="Название сервера или провайдер">
+<div id="servers" class="servers"></div>
+<div id="legacyPages" class="row" hidden><button id="previous">← Назад</button><span id="page"></span><button id="next">Далее →</button></div>
+</section>
+<button id="status" class="wide" disabled>Обновить состояние</button>
+</main>
+<footer>Измеряется HTTP-запрос через сервер, а не ICMP ping. Задержка до конкретного сайта или игрового сервера может отличаться. Массовая проверка запускается только по кнопке.</footer>
+<script nonce="__CSP_NONCE__">/* R3S Next Mini App transport helpers. Browser + Node; no secrets in URL/storage. */
+(function(root, factory) {
+  const api = factory();
+  if (typeof module === 'object' && module.exports) module.exports = api;
+  else root.R3SProtocol = api;
+})(typeof globalThis !== 'undefined' ? globalThis : this, function() {
+  'use strict';
+  function decodeBridge(fragment) {
+    if (typeof fragment !== 'string' || fragment.length > 65536) throw new Error('bridge_invalid');
+    const entries = new URLSearchParams(fragment.replace(/^#/, ''));
+    const values = entries.getAll('r3s');
+    if (!values.length) return null;
+    if (values.length !== 1) throw new Error('bridge_invalid');
+    const encoded = values[0];
+    // Telegram adds tgWebApp* parameters to the SAME fragment. Decode only r3s.
+    // Accept the publisher's unpadded base64url form, never a whole URL suffix.
+    if (!/^[A-Za-z0-9_-]{1,16000}$/.test(encoded) || encoded.length % 4 === 1) throw new Error('bridge_invalid');
+    let data;
+    try {
+      const padded = encoded.replace(/-/g, '+').replace(/_/g, '/') + '='.repeat((4 - encoded.length % 4) % 4);
+      const bytes = Uint8Array.from(atob(padded), char => char.charCodeAt(0));
+      data = JSON.parse(new TextDecoder('utf-8', {fatal: true}).decode(bytes));
+    } catch (_) { throw new Error('bridge_invalid'); }
+    if (!data || ![1,2].includes(data.version) || !/^[a-f0-9]{32}$/.test(data.nonce) ||
+        !['admin','operator','viewer'].includes(data.role) || !Array.isArray(data.servers) ||
+        data.servers.length > 500 || !Number.isInteger(data.page) || data.page < 0 ||
+        !Number.isInteger(data.total) || data.total < 0) throw new Error('bridge_invalid');
+    if (data.version === 2 && (!Array.isArray(data.capabilities) || data.capabilities.some(x=>!['services','refresh_latency'].includes(x)))) throw new Error('bridge_invalid');
+    return data;
+  }
+  function orderedServers(items) {
+    const rank = item => item.provider === 'self' ? 0 : item.provider === 'vzletka' ? 1 :
+      item.provider === 'allvpn' && item.kind === 'auto' ? 2 : item.provider === 'allvpn' ? 3 : 4;
+    // Keep provider order and inventory order. Measured latency never reorders groups.
+    return items.map((item,index) => ({item,index})).sort((a,b) => rank(a.item)-rank(b.item)||a.index-b.index).map(x=>x.item);
+  }
+  function identifier() {
+    const buffer = new Uint8Array(16); crypto.getRandomValues(buffer);
+    return Array.from(buffer, value=>value.toString(16).padStart(2,'0')).join('');
+  }
+  function legacyAction(action, params, capabilities=[]) {
+    if (action === 'status') return {action:'status',params:{}};
+    if (action === 'set_mode' && params.mode === 'vpn') return {action:'auto',params:{}};
+    if (action === 'set_mode' && params.mode === 'direct') return {action:'direct',params:{}};
+    if (action === 'set_mode' && params.mode === 'services' && capabilities.includes('services')) return {action:'services',params:{}};
+    if (action === 'refresh_latency' && capabilities.includes('refresh_latency')) return {action:'refresh_latency',params:{}};
+    if (action === 'select_server') return {action:'select_server',params:{server_id:params.server_id}};
+    if (action === 'miniapp_page') return {action:'miniapp_page',params:{page:params.page}};
+    throw new Error('legacy_feature_unavailable');
+  }
+  return {decodeBridge, orderedServers, identifier, legacyAction};
+});
+</script>
+<script nonce="__CSP_NONCE__">'use strict';
+(function() {
+  const P = window.R3SProtocol, tg = window.Telegram && window.Telegram.WebApp;
+  const $ = id => document.getElementById(id);
+  const labels = {self:'Наш VPS',vzletka:'Vzletka',allvpn:'AllVPN'};
+  let session = null, csrf = null, nonce = null, bridge = null, role = 'viewer', snapshot = {}, busy = false, blocked = true, timer = null;
+  function notice(text) { $('message').textContent = text; $('message').hidden = !text; }
+  function permissions() {
+    const canWrite = !blocked && !busy && ['admin','operator'].includes(role);
+    document.querySelectorAll('[data-mode]').forEach(button => {
+      button.disabled = !canWrite || (['direct','services'].includes(button.dataset.mode) && role !== 'admin') || (bridge && button.dataset.mode === 'services' && !(bridge.capabilities||[]).includes('services'));
+    });
+    document.querySelectorAll('.server').forEach(button => button.disabled = !canWrite);
+    $('refresh').disabled = !canWrite || (bridge && !(bridge.capabilities||[]).includes('refresh_latency')) || !!(snapshot.probe && snapshot.probe.running);
+    $('status').disabled = blocked || busy;
+  }
+  async function post(path, body, authenticated = true) {
+    const headers = {'Content-Type':'application/json'};
+    if (authenticated) { headers.Authorization = 'Bearer ' + session; headers['X-R3S-CSRF'] = csrf; }
+    const control = new AbortController(), timeout = setTimeout(() => control.abort(), 18000);
+    try {
+      const response = await fetch(path, {method:'POST',headers,body:JSON.stringify(body),cache:'no-store',credentials:'omit',signal:control.signal});
+      if (!(response.headers.get('content-type') || '').includes('application/json')) throw new Error('backend_missing');
+      const reply = await response.json();
+      if (!response.ok) throw new Error(reply.error || 'request_failed');
+      return reply;
+    } finally { clearTimeout(timeout); }
+  }
+  function absorb(result) {
+    nonce = result.nonce || nonce;
+    if (result.snapshot) snapshot=result.snapshot;
+    if (result.status) snapshot.status=result.status;
+    if (Array.isArray(result.servers)) snapshot.servers=result.servers;
+    const job=result.latency_refresh || (result.status && result.status.latency_refresh);
+    if (job) snapshot.probe={running:['queued','running'].includes(job.state),completed:job.completed||0,total:job.total||0,updated_at:job.finished_at||0};
+  }
+  async function rpc(name, params) {
+    const result=await post('api/action',{action:name,params:params||{},nonce,request_id:P.identifier()});
+    absorb(result);return result;
+  }
+  function render() {
+    const state = snapshot.status || snapshot;
+    const mode = state.routing_policy === 'services' ? 'services' : state.mode === 'auto' || state.mode === 'manual' ? 'vpn' : state.mode;
+    $('modeBadge').textContent = {vpn:'ВСЁ ЧЕРЕЗ VPN',direct:'DIRECT',services:'ВЫБРАННЫЕ СЕРВИСЫ'}[mode] || 'НЕ ПОДТВЕРЖДЁН';
+    const selected = state.selected_server || {};
+    $('selected').textContent = selected.name || labels[state.route] || (mode === 'direct' ? 'Провайдер' : '—');
+    $('delay').textContent = Number.isFinite(state.latency_ms) ? Math.round(state.latency_ms)+' мс' : 'Нет замера';
+    $('routeState').textContent = state.healthy === true ? 'Маршрут подтверждён.' : state.healthy === false ? 'Маршрут недоступен. Проверьте выбранный сервер.' : 'Доступность пока не подтверждена.';
+    $('modeNote').textContent = bridge ? (bridge.version===1?'Снимок состояния: команда возвращает в чат. Режим сервисов и обновление задержек требуют нового серверного компонента.':'Команда возвращает в чат. После проверки задержек бот пришлёт новый снимок со всеми результатами.') : 'В VPN-режимах при недоступном VPN защищённый трафик блокируется. Локальная сеть остаётся доступной.';
+    document.querySelectorAll('[data-mode]').forEach(button => button.setAttribute('aria-pressed', String(button.dataset.mode === mode)));
+    const probe = snapshot.probe || {};
+    $('progress').textContent = probe.running ? 'Проверяем серверы: '+(probe.completed||0)+' / '+(probe.total||0) : probe.updated_at ? 'Последняя проверка: '+new Date(probe.updated_at*1000).toLocaleTimeString() : 'Обновите задержки для актуальных результатов.';
+    const query = $('search').value.toLocaleLowerCase(), list = $('servers'); list.replaceChildren();
+    let lastGroup = null;
+    for (const entry of P.orderedServers(snapshot.servers || [])) {
+      if (!(entry.name+' '+(labels[entry.provider] || '')).toLocaleLowerCase().includes(query)) continue;
+      const group = entry.provider === 'allvpn' && entry.kind === 'auto' ? 'AllVPN Auto' : labels[entry.provider] || 'Другие';
+      if (group !== lastGroup) { const title = document.createElement('div'); title.className='group'; title.textContent=group; list.append(title); lastGroup=group; }
+      const button = document.createElement('button'); button.className='server'; button.setAttribute('aria-pressed',String(entry.selected===true));
+      const text = document.createElement('div'), name = document.createElement('div'), meta = document.createElement('span');
+      name.className='name'; name.textContent=entry.name; meta.textContent = entry.healthy===false ? 'Не отвечает' : entry.kind==='auto' ? 'Автоматический выбор в группе' : group;
+      text.append(name,meta); const latency = document.createElement('div'); latency.className='latency'; latency.textContent=Number.isFinite(entry.latency_ms)?Math.round(entry.latency_ms)+' мс':'—';
+      button.append(text,latency); button.onclick=()=>action('select_server',{server_id:entry.server_id}); list.append(button);
+    }
+    if (!list.childElementCount) { const empty=document.createElement('p'); empty.className='muted'; empty.textContent='Нет подходящих серверов.'; list.append(empty); }
+    permissions();
+  }
+  function schedule() {
+    clearTimeout(timer);
+    // Poll only during an explicitly requested latency job; no continuous full scan.
+    if (!bridge && !blocked && snapshot.probe && snapshot.probe.running) timer=setTimeout(()=>action('status',{},true),2000);
+  }
+  async function action(actionName, params={}, quiet=false) {
+    if (busy || blocked) return;
+    busy=true; permissions(); if (!quiet) notice('Выполняем…');
+    try {
+      if (bridge) {
+        const request=P.legacyAction(actionName,params,bridge.capabilities||[]);
+        tg.sendData(JSON.stringify({...request,nonce:bridge.nonce,request_id:P.identifier()}));
+        // Telegram sendData closes a keyboard-launched app; do not claim application.
+        notice('Команда отправлена. Подтверждение появится в чате.'); return;
+      }
+      const request=P.legacyAction(actionName,params,['services','refresh_latency']);
+      const result=await rpc(request.action,request.params);
+      if (actionName==='status' || ['set_mode','select_server'].includes(actionName)) await rpc('list_servers',{});
+      if (result.ok===false || result.verified===false) notice('Результат не подтверждён. Обновите состояние перед повтором.');
+      else if (!quiet) notice(actionName==='refresh_latency'?'Проверка задержек запущена.':actionName==='status'?'Состояние обновлено.':'Команда выполнена и проверена.');
+      render();
+    } catch(error) {
+      if (['session_invalid','telegram_auth_expired','telegram_user_denied','action_nonce_invalid'].includes(error.message)) {blocked=true;notice('Откройте новую панель из бота: сеанс закончился или доступ не разрешён.');}
+      else notice(error.message==='backend_missing'?'Откройте панель через свежую кнопку «Открыть управление R3S» в чате с ботом.':'Связь прервалась. Действие автоматически не повторялось; обновите состояние.');
+    } finally { busy=false; permissions(); schedule(); }
+  }
+  document.querySelectorAll('[data-mode]').forEach(button=>button.onclick=()=>action('set_mode',{mode:button.dataset.mode}));
+  $('status').onclick=()=>action('status'); $('refresh').onclick=()=>action('refresh_latency'); $('search').oninput=render;
+  $('previous').onclick=()=>action('miniapp_page',{page:bridge.page-1}); $('next').onclick=()=>action('miniapp_page',{page:bridge.page+1});
+  window.addEventListener('pagehide',()=>clearTimeout(timer));
+  (async function start() {
+    permissions();
+    if (!tg) {notice('Откройте панель через своего Telegram-бота.');return;}
+    tg.ready(); tg.expand();
+    try {
+      bridge=P.decodeBridge(location.hash);
+      if (bridge) {
+        snapshot=bridge;role=bridge.role;blocked=false;
+        history.replaceState(null,'',location.pathname+location.search);
+        $('connection').textContent='Снимок из Telegram · команда возвращает в чат';
+        $('legacyPages').hidden=false;$('page').textContent=(bridge.page+1)+' / '+Math.max(1,Math.ceil(bridge.total/12));
+        $('previous').disabled=bridge.page===0;$('next').disabled=(bridge.page+1)*12>=bridge.total;
+        render();return;
+      }
+      if (!tg.initData) {notice('Откройте свежую панель кнопкой меню или inline-кнопкой своего бота.');return;}
+      const auth=await post('api/auth',{init_data:tg.initData},false);
+      session=auth.session;csrf=auth.csrf;nonce=auth.nonce;role=auth.role;blocked=false;
+      $('connection').textContent='Telegram · доступ подтверждён';
+      await action('status');
+    } catch(error) {blocked=true;notice(error.message==='bridge_invalid'?'Ссылка панели повреждена. Отправьте /start боту и откройте новую кнопку.':error.message==='backend_missing'?'Откройте панель через свежую кнопку «Открыть управление R3S» в чате с ботом.':'Доступ не подтверждён. Откройте свежую панель через бота.');permissions();}
+  })();
+})();
 </script>
 </body></html>
