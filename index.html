@@ -3,8 +3,16 @@
 <head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="referrer" content="no-referrer"><title>R3S · Домашняя сеть</title>
-<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'sha256-DVpTQG/JnVSuJbTX1G1M0Qmof9q5ZG1n6e9fO4tSNuE=' 'sha256-9U1eINQQpba4F7FQIGAZz3aeWbCh2GRLpPhM0o/Ayo4=' https://telegram.org; style-src 'sha256-MSc5mP22IkAxAhpB1syEexJLocn7FtrljXO8KKoHNJw='; connect-src 'self'; img-src 'self' data:; base-uri 'none'; form-action 'none'">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'sha256-LYaG/QgjT6HH6VseobWDF5QacAf7yfftjs+AwEGcW1c=' 'sha256-xK5IYN8X6prOOI70zwzyjLeTKEFtfWceBH2cZdW/so0=' https://telegram.org; style-src 'sha256-xniZMWZcBbwS9YIBobLVNuYtXbliPpZycFEF6ulaubk='; connect-src 'self'; img-src 'self' data:; base-uri 'none'; form-action 'none'">
 <style nonce="__CSP_NONCE__">:root{color-scheme:dark;--bg:#101923;--card:#1b2938;--line:#35485b;--text:#f1f6fb;--muted:#a6bbce;--accent:#80d4ba;font:16px/1.45 system-ui,sans-serif}*{box-sizing:border-box}body{margin:0 auto;max-width:760px;padding:22px 16px calc(24px + env(safe-area-inset-bottom));background:var(--tg-theme-bg-color,var(--bg));color:var(--tg-theme-text-color,var(--text))}h1{font-size:34px;margin:2px 0}h2{font-size:19px;margin:0}.eyebrow{letter-spacing:.13em;font-size:11px;color:var(--accent);font-weight:700}.muted,footer{font-size:13px;color:var(--tg-theme-hint-color,var(--muted))}.card{padding:18px;border-radius:18px;border:1px solid var(--line);background:var(--tg-theme-secondary-bg-color,var(--card));margin:17px 0}.row{display:flex;align-items:center;justify-content:space-between;gap:12px}.metrics{display:grid;grid-template-columns:1.5fr 1fr;gap:12px;margin-top:18px}.metrics strong{font-size:20px;display:block;overflow-wrap:anywhere}.label{font-size:11px;color:var(--muted)}.badge{font-size:11px;border:1px solid var(--line);padding:4px 9px;border-radius:50px;color:var(--accent)}button,input{font:inherit;border:1px solid var(--line);border-radius:12px;color:var(--text);background:var(--bg);padding:12px;min-height:46px}button{cursor:pointer}button:disabled{opacity:.45;cursor:default}button[aria-pressed=true]{border-color:var(--accent);box-shadow:inset 3px 0 var(--accent)}button strong{display:block}button span{display:block;font-size:12px;color:var(--muted);margin-top:3px}.small{min-height:38px;font-size:12px;padding:8px 10px}.modes,.servers{display:grid;gap:9px;margin-top:13px}.modes button{text-align:left}.server{display:flex;align-items:center;justify-content:space-between;gap:10px;text-align:left}.server .name{font-weight:650;overflow-wrap:anywhere}.server .latency{font-size:13px;white-space:nowrap}.group{font-size:12px;color:var(--accent);font-weight:700;margin:12px 2px 0}input,.wide{width:100%}input{margin-top:12px}#message{border:1px solid var(--line);padding:13px;border-radius:12px;font-size:13px;white-space:pre-wrap}footer{margin-top:24px}[hidden]{display:none!important}@media(max-width:360px){.row{align-items:flex-start;flex-direction:column}.metrics{grid-template-columns:1fr}}
+/* Status colours supplement explicit text; provider order remains visible. */
+.server.quality-good{border-color:#408d62;background:#142c25}
+.server.quality-good .latency,.server.quality-good .quality-label{color:#92e8ad}
+.server.quality-bad{border-color:#b96565;background:#321d24}
+.server.quality-bad .latency,.server.quality-bad .quality-label{color:#ffb3b3}
+.server.quality-unknown .latency,.server.quality-unknown .quality-label{color:var(--muted)}
+.server[aria-pressed=true]{box-shadow:inset 4px 0 var(--accent)}
+@media(max-width:420px){.server .latency{white-space:normal;text-align:right;max-width:40%}}
 </style>
 <script src="https://telegram.org/js/telegram-web-app.js?64"></script>
 
@@ -23,6 +31,7 @@
 </div><p id="modeNote" class="muted"></p></section>
 <section class="card"><div class="row"><h2>Серверы</h2><button id="refresh" class="small" disabled>Обновить задержки</button></div>
 <p class="muted">Наш VPS → Vzletka → AllVPN Auto → AllVPN</p>
+<p class="muted">Менее 40 мс — рекомендуется. Более 350 мс или нет ответа — в конце списка. Серый — нет свежего замера.</p>
 <div id="progress" class="muted" aria-live="polite"></div>
 <input id="search" type="search" aria-label="Поиск сервера" placeholder="Название сервера или провайдер">
 <div id="servers" class="servers"></div>
@@ -30,7 +39,7 @@
 </section>
 <button id="status" class="wide" disabled>Обновить состояние</button>
 </main>
-<footer>Измеряется HTTP-запрос через сервер, а не ICMP ping. Задержка до конкретного сайта или игрового сервера может отличаться. Массовая проверка запускается только по кнопке.</footer>
+<footer>Измеряется HTTP-запрос через сервер, а не ICMP ping. Задержка до конкретного сайта или игрового сервера может отличаться. Нет ответа — не прошёл запрос с тайм-аутом 2 с; это не доказывает недоступность всех сайтов. Массовая проверка запускается только по кнопке. Результаты списка актуальны 10 минут.</footer>
 <script nonce="__CSP_NONCE__">/* R3S Next Mini App transport helpers. Browser + Node; no secrets in URL/storage. */
 (function(root, factory) {
   const api = factory();
@@ -61,11 +70,22 @@
     if (data.version === 2 && (!Array.isArray(data.capabilities) || data.capabilities.some(x=>!['services','refresh_latency'].includes(x)))) throw new Error('bridge_invalid');
     return data;
   }
+  function serverQuality(item) {
+    const ms = Number.isFinite(item.latency_ms) && item.latency_ms >= 0 && item.latency_ms <= 60000 ? item.latency_ms : null;
+    if (['stale','unmeasured'].includes(item.latency_status)) return {tone:'unknown',bad:false,label:item.latency_status==='stale'?'Замер устарел':'Не проверен',value:ms===null?'Нет замера':Math.round(ms)+' мс (ранее)'};
+    if (item.healthy === false || item.latency_status === 'unreachable') return {tone:'bad',bad:true,label:'Недоступен при проверке',value:'Нет ответа'};
+    if (ms === null) return {tone:'unknown',bad:false,label:'Не проверен',value:'Нет замера'};
+    if (item.healthy !== true && item.latency_status !== 'reachable') return {tone:'unknown',bad:false,label:'Доступность не подтверждена',value:Math.round(ms)+' мс (ранее)'};
+    if (ms > 350) return {tone:'bad',bad:true,label:'Не рекомендуется',value:Math.round(ms)+' мс'};
+    if (ms < 40) return {tone:'good',bad:false,label:'Рекомендуется',value:Math.round(ms)+' мс'};
+    return {tone:'normal',bad:false,label:'Доступен',value:Math.round(ms)+' мс'};
+  }
+  function refreshAction(probe) { return probe && probe.running ? 'status' : 'refresh_latency'; }
   function orderedServers(items) {
     const rank = item => item.provider === 'self' ? 0 : item.provider === 'vzletka' ? 1 :
       item.provider === 'allvpn' && item.kind === 'auto' ? 2 : item.provider === 'allvpn' ? 3 : 4;
-    // Keep provider order and inventory order. Measured latency never reorders groups.
-    return items.map((item,index) => ({item,index})).sort((a,b) => rank(a.item)-rank(b.item)||a.index-b.index).map(x=>x.item);
+    // Backend performs this ordering globally before pagination as well.
+    return items.map((item,index) => ({item,index})).sort((a,b) => Number(serverQuality(a.item).bad)-Number(serverQuality(b.item).bad)||rank(a.item)-rank(b.item)||a.index-b.index).map(x=>x.item);
   }
   function identifier() {
     const buffer = new Uint8Array(16); crypto.getRandomValues(buffer);
@@ -81,7 +101,7 @@
     if (action === 'miniapp_page') return {action:'miniapp_page',params:{page:params.page}};
     throw new Error('legacy_feature_unavailable');
   }
-  return {decodeBridge, orderedServers, identifier, legacyAction};
+  return {decodeBridge, orderedServers, serverQuality, refreshAction, identifier, legacyAction};
 });
 </script>
 <script nonce="__CSP_NONCE__">'use strict';
@@ -97,7 +117,8 @@
       button.disabled = !canWrite || (['direct','services'].includes(button.dataset.mode) && role !== 'admin') || (bridge && button.dataset.mode === 'services' && !(bridge.capabilities||[]).includes('services'));
     });
     document.querySelectorAll('.server').forEach(button => button.disabled = !canWrite);
-    $('refresh').disabled = !canWrite || (bridge && !(bridge.capabilities||[]).includes('refresh_latency')) || !!(snapshot.probe && snapshot.probe.running);
+    $('refresh').disabled = !canWrite || (bridge && !(bridge.capabilities||[]).includes('refresh_latency'));
+    $('refresh').textContent = snapshot.probe && snapshot.probe.running ? 'Показать промежуточные результаты' : 'Обновить задержки';
     $('status').disabled = blocked || busy;
   }
   async function post(path, body, authenticated = true) {
@@ -135,17 +156,20 @@
     $('modeNote').textContent = bridge ? (bridge.version===1?'Снимок состояния: команда возвращает в чат. Режим сервисов и обновление задержек требуют нового серверного компонента.':'Команда возвращает в чат. После проверки задержек бот пришлёт новый снимок со всеми результатами.') : 'В VPN-режимах при недоступном VPN защищённый трафик блокируется. Локальная сеть остаётся доступной.';
     document.querySelectorAll('[data-mode]').forEach(button => button.setAttribute('aria-pressed', String(button.dataset.mode === mode)));
     const probe = snapshot.probe || {};
-    $('progress').textContent = probe.running ? 'Проверяем серверы: '+(probe.completed||0)+' / '+(probe.total||0) : probe.updated_at ? 'Последняя проверка: '+new Date(probe.updated_at*1000).toLocaleTimeString() : 'Обновите задержки для актуальных результатов.';
+    $('progress').textContent = probe.running ? 'Проверяем серверы: '+(probe.completed||0)+' / '+(probe.total||0)+'. Результаты можно открыть сейчас.' : probe.updated_at ? 'Проверено '+(probe.completed||0)+' / '+(probe.total||0)+' · '+new Date(probe.updated_at*1000).toLocaleTimeString() : 'Обновите задержки для актуальных результатов.';
     const query = $('search').value.toLocaleLowerCase(), list = $('servers'); list.replaceChildren();
     let lastGroup = null;
     for (const entry of P.orderedServers(snapshot.servers || [])) {
       if (!(entry.name+' '+(labels[entry.provider] || '')).toLocaleLowerCase().includes(query)) continue;
-      const group = entry.provider === 'allvpn' && entry.kind === 'auto' ? 'AllVPN Auto' : labels[entry.provider] || 'Другие';
+      const quality = P.serverQuality(entry);
+      const provider = entry.provider === 'allvpn' && entry.kind === 'auto' ? 'AllVPN Auto' : labels[entry.provider] || 'Другие';
+      const group = (quality.bad ? 'Не рекомендуются · ' : '') + provider;
       if (group !== lastGroup) { const title = document.createElement('div'); title.className='group'; title.textContent=group; list.append(title); lastGroup=group; }
-      const button = document.createElement('button'); button.className='server'; button.setAttribute('aria-pressed',String(entry.selected===true));
+      const button = document.createElement('button'); button.className='server quality-'+quality.tone; button.setAttribute('aria-pressed',String(entry.selected===true));
       const text = document.createElement('div'), name = document.createElement('div'), meta = document.createElement('span');
-      name.className='name'; name.textContent=entry.name; meta.textContent = entry.healthy===false ? 'Не отвечает' : entry.kind==='auto' ? 'Автоматический выбор в группе' : group;
-      text.append(name,meta); const latency = document.createElement('div'); latency.className='latency'; latency.textContent=Number.isFinite(entry.latency_ms)?Math.round(entry.latency_ms)+' мс':'—';
+      name.className='name'; name.textContent=entry.name; meta.className='quality-label';
+      meta.textContent = quality.label + (entry.kind==='auto' ? ' · AUTO' : '') + (entry.selected ? ' · Выбран' : '');
+      text.append(name,meta); const latency = document.createElement('div'); latency.className='latency'; latency.textContent=quality.value;
       button.append(text,latency); button.onclick=()=>action('select_server',{server_id:entry.server_id}); list.append(button);
     }
     if (!list.childElementCount) { const empty=document.createElement('p'); empty.className='muted'; empty.textContent='Нет подходящих серверов.'; list.append(empty); }
@@ -178,7 +202,7 @@
     } finally { busy=false; permissions(); schedule(); }
   }
   document.querySelectorAll('[data-mode]').forEach(button=>button.onclick=()=>action('set_mode',{mode:button.dataset.mode}));
-  $('status').onclick=()=>action('status'); $('refresh').onclick=()=>action('refresh_latency'); $('search').oninput=render;
+  $('status').onclick=()=>action('status'); $('refresh').onclick=()=>action(P.refreshAction(snapshot.probe)); $('search').oninput=render;
   $('previous').onclick=()=>action('miniapp_page',{page:bridge.page-1}); $('next').onclick=()=>action('miniapp_page',{page:bridge.page+1});
   window.addEventListener('pagehide',()=>clearTimeout(timer));
   (async function start() {
